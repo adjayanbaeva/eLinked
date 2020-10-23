@@ -4,8 +4,7 @@
   "description": "Social network for developers",
   "main": "server.js",
   "scripts": {
-    "start": "server.js"
-    
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Ainur Dzhaianbaeva",
   "license": "ISC",
