@@ -7,7 +7,7 @@ const profile = require('./routes/api/profile');
 const app = express();
 
 //Body parser configuration
-app.use(body-parser.urlencoded({extended: false}));
+app.use(bodyparser.urlencoded({extended: false}));
 app.use(bodyparser.json());
 
 //Db config
