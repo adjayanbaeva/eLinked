@@ -2,6 +2,7 @@ const express = require('express');
 const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const keys = require('../../config/keys');
 const router = express.Router();
 const User = require('../../models/User');
 
@@ -66,7 +67,7 @@ router.post('/login', (req, res) => {
                         //Payload
                         const payload = {id: user.id, name: user.name, avatar: user.avatar};
                         //sign token
-                        jwt.sign(payload, )
+                        jwt.sign(payload, keys.secretOrPrivateKey)
                     } else {
                         return res.status(400).json({password: 'Password incorrect'});
                     }
