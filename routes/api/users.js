@@ -1,6 +1,7 @@
 const express = require('express');
 const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 const router = express.Router();
 const User = require('../../models/User');
 
@@ -67,7 +68,7 @@ router.post('/login', (req, res) => {
                         return res.status(400).json({password: 'Password incorrect'});
                     }
                 })
-                .catch()
+                
         })
         .catch()
 })
