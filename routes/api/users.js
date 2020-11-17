@@ -65,6 +65,8 @@ router.post('/login', (req, res) => {
                     if (isMatch){
                         //Payload
                         const payload = {id: user.id, name: user.name, avatar: user.avatar};
+                        //sign token
+                        jwt.sign(payload, )
                     } else {
                         return res.status(400).json({password: 'Password incorrect'});
                     }
