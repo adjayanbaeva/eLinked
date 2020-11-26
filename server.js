@@ -5,10 +5,14 @@ const users = require('./routes/api/users');
 const posts = require('./routes/api/posts');
 const profile = require('./routes/api/profile');
 const app = express();
+const passport = require('passport');
 
 //Body parser configuration
 app.use(bodyparser.urlencoded({extended: false}));
 app.use(bodyparser.json());
+
+//Passport configuration
+app.use(passport.initialize());
 
 //Db config
 const db = require("./config/keys").mongoURI;
