@@ -34,6 +34,17 @@ router.post(
         if (req.body.linkedin) profileFields.social.linkedin = req.body.linkedin;
         if (req.body.instagram) profileFields.social.instagram = req.body.instagram;
 
+        Profile.findOne({user: req.user.id}).then((profile) => {
+            if (profile) {
+                //Update/Edit
+                Profile.findByIdAndUpdate(
+                    { user: re.user.id },
+                    { $set: profileFields },
+                    { new: true }
+                ).then((profile)=>res.json(profile));
+            }
+        })
+
     }
     
 )
