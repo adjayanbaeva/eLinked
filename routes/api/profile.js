@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
+const validateProfileInput = require('../../validation/profile');
 
 //@route POST api/profile
 //@desc Create or edit/update user profile
@@ -13,6 +14,12 @@ router.post(
     '/',
     passport.authenticate('jwt', {session: false}),
     (req, res)=>{
+        //Validate user input
+        const {errors, isValid} = validateProfileInput(req.body);
+        if (!isValid){
+            return res.status(400).json(errors);
+        }
+
         const profileFields = {};
         profileFields.user = req.user.id;
         if (req.body.handle) profileFields.handle = req.body.handle;
