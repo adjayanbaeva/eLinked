@@ -50,6 +50,9 @@ router.post(
                         errors.handle = "That handle already exists";
                         return res.status(400).json(errors);
                     }
+                    //Save Profile
+                    new Profile(profileFields)
+                        .save().then((profile) => res.json(profile));
                 })
             }
         })
