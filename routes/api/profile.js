@@ -6,6 +6,28 @@ const Profile = require('../../models/Profile');
 const User = require('../../models/User');
 const validateProfileInput = require('../../validation/profile');
 
+//@route GET api/profile
+//@desc Get current user's profile
+//@access Private
+
+router.get(
+    '/',
+    passport.authenticate('jwt', { session: false }),
+    (req, res) => {
+        const errors = {};
+        Profile.findOne({user: req.body.id})
+            .populate('user', ['name', 'avatar'])
+            .then((profile) => {
+                if (!profile) {
+                    errors.noprofile = 'There is no profile found for this user';
+                    return res.status(404).json(errors)
+                }
+                res.json(profile);
+            })
+            .catch((err) => res.status(404).json(err));
+    }
+)
+
 //@route POST api/profile
 //@desc Create or edit/update user profile
 //@access Private
