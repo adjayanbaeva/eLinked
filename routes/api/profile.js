@@ -37,7 +37,7 @@ router.get(
 router.post(
     '/',
     passport.authenticate('jwt', {session: false}),
-    (req, res)=>{
+    (req, res) => {
         //Validate user input
         const {errors, isValid} = validateProfileInput(req.body);
         if (!isValid){
@@ -53,9 +53,9 @@ router.post(
         if (req.body.bio) profileFields.bio = req.body.bio;
         if (req.body.status) profileFields.status = req.body.status;
         if (req.body.githubusername) profileFields.githubusername = req.body.githubusername;
-        if (req.body.skills !== 'undefined'){
-            profileFields.skills = req.body.skills.split(',');
-        }
+        if (typeof req.body.skills !== "undefined") {
+            profileFields.skills = req.body.skills.split(",");
+          }
 
         //Social
         profileFields.social = {};
@@ -68,8 +68,8 @@ router.post(
         Profile.findOne({user: req.user.id}).then((profile) => {
             if (profile) {
                 //Update/Edit
-                Profile.findByIdAndUpdate(
-                    { user: re.user.id },
+                Profile.findOneAndUpdate(
+                    { user: req.user.id },
                     { $set: profileFields },
                     { new: true }
                 ).then((profile)=>res.json(profile));
