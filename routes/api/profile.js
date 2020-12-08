@@ -30,10 +30,26 @@ router.get(
     }
 )
 
+//@route GET api/profiles/all
+//@desc Get all profiles
+//@Acess Public
+route/get('/all', (req, res) => {
+    const errors = {};
+    Profile.find()
+        .populate('users', ['name', 'avatar'])
+        .then((profiles) => {
+            if (!profiles) {
+                errors.noprofile = 'There are no profiles'
+                return res.status(404).json(errors)
+            }
+            res.json(profiles);
+        })
+        .catch((err) => res.status(404).json({profile: 'There are no profiles'}))
+})
+
 //@route POST api/profile
 //@desc Create or edit/update user profile
 //@access Private
-
 router.post(
     '/',
     passport.authenticate('jwt', {session: false}),
