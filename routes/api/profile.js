@@ -130,4 +130,44 @@ router.post(
     }
 )
 
+//@route POST api/profile/education
+//@desc Add eduction to profile
+//@access Private
+
+router.route(
+    '/experience',
+    passport.authenticate('jwt', { session:false }),
+    (req,res) => {
+        const {errors, isValid} = validateEducationInput(req.body);
+        //Check validation
+        if (!isValid){
+            return res.status(400).json(errors);
+        }
+
+        Profile.findOne({user: req.user.id})
+            .populate('user', ['name', 'avatar'])
+            .then((profile) => {
+                if (!profile){
+                    errors.noprofile = 'There is no profile found for this user';
+                    return res.status(404).json(errors);
+                }
+
+                const newEdu = {
+                    school: req.body.school,
+                    degree: req.body.degree,
+                    fieldofstudy: req.body.fieldofstudy,
+                    from: req.body.from,
+                    to: req.body.to,
+                    current: req.body.current,
+                    description: req.body.description
+                };
+
+                //Add to education array
+                profile.education.unshift(newEdu);
+                profile.save().then((profile) => json(profile));
+
+            })
+    }
+)
+
 module.exports = router;
