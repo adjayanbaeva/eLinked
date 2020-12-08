@@ -32,7 +32,7 @@ router.get(
 
 //@route GET api/profile/all
 //@desc Get all profiles
-//@Acess Public
+//@Access Public
 router.get('/all', (req, res) => {
     const errors = {};
     Profile.find()
@@ -46,6 +46,23 @@ router.get('/all', (req, res) => {
         })
         .catch((err) => res.status(404).json({profile: 'There are no profiles'}))
 })
+
+//@route GET api/profile/handle/:hanadle
+//@desc Get profile by handle
+//@access Public
+router.get('/handle/:handle', (req,res) => {
+    const errors = {};
+    Profile.findOne({handle: req.params.handle})
+        .populate('user', ['name', 'avatar'])
+        .then((profile) =>{
+            if (!profile){
+                errors.noprofile = 'There is no user with this handle';
+                return res.status(404).json(errors);
+            }
+            res.json(profile)
+        })
+        .catch((err) => res.status(404).json(err));
+});
 
 //@route POST api/profile
 //@desc Create or edit/update user profile
