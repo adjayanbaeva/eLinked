@@ -30,10 +30,10 @@ router.get(
     }
 )
 
-//@route GET api/profiles/all
+//@route GET api/profile/all
 //@desc Get all profiles
 //@Acess Public
-route/get('/all', (req, res) => {
+router.get('/all', (req, res) => {
     const errors = {};
     Profile.find()
         .populate('users', ['name', 'avatar'])
