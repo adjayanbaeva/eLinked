@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './App.css';
 import Navbar from './components/Layout/Navbar';
 import Footer from './components/Layout/Footer';
+import Landing from './components/Layout/Landing';
 
 
 class App extends Component {
@@ -9,7 +10,7 @@ class App extends Component {
     return (
       <div className="App">
         <Navbar />
-        <h1>My React App</h1>
+        <Landing />
         <Footer />
       </div>
     )
