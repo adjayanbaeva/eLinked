@@ -5,7 +5,7 @@ import React, { Component } from 'react'
     return (
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
         <div className="container">
-          <a className="navbar-brand" href="landing.html">eLinked</a>
+          <a className="navbar-brand" href="/">eLinked</a>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-nav">
             <span className="navbar-toggler-icon"></span>
           </button>
@@ -20,10 +20,10 @@ import React, { Component } from 'react'
     
             <ul className="navbar-nav ml-auto">
               <li className="nav-item">
-                <a className="nav-link" href="register.html">Sign Up</a>
+                <a className="nav-link" href="/register">Sign Up</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="login.html">Login</a>
+                <a className="nav-link" href="/login">Login</a>
               </li>
             </ul>
           </div>
