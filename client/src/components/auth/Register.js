@@ -11,6 +11,11 @@ class Register extends Component {
             errors:""
         }
     }
+
+    onChange(e) {
+        this.setState({[e.target.name]: e.target.value});
+    }
+
     render(){
         return (
             <div className="register">
@@ -21,7 +26,7 @@ class Register extends Component {
                     <p className="lead text-center">Create your eLinked account</p>
                     <form action="create-profile.html">
                         <div className="form-group">
-                        <input type="text" className="form-control form-control-lg" placeholder="Name" name="name" value={this.state.name} required />
+                        <input type="text" className="form-control form-control-lg" placeholder="Name" name="name" value={this.state.name} onChange={this.onChange.bind(this)} required />
                         </div>
                         <div className="form-group">
                         <input type="email" className="form-control form-control-lg" placeholder="Email Address" name="email" />
