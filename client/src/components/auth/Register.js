@@ -32,14 +32,14 @@ class Register extends Component {
                         <input type="text" className="form-control form-control-lg" placeholder="Name" name="name" value={this.state.name} onChange={this.onChange} required />
                         </div>
                         <div className="form-group">
-                        <input type="email" className="form-control form-control-lg" placeholder="Email Address" name="email" value = {this.state.email} onChange={this.onChnage} />
+                        <input type="email" className="form-control form-control-lg" placeholder="Email Address" name="email" value = {this.state.email} onChange={this.onChange} />
                         <small className="form-text text-muted">This site uses Gravatar so if you want a profile image, use a Gravatar email</small>
                         </div>
                         <div className="form-group">
-                        <input type="password" className="form-control form-control-lg" placeholder="Password" name="password" value = {this.state.password} onChnage={this.onChange} />
+                        <input type="password" className="form-control form-control-lg" placeholder="Password" name="password" value = {this.state.password} onChange={this.onChange} />
                         </div>
                         <div className="form-group">
-                        <input type="password" className="form-control form-control-lg" placeholder="Confirm Password" name="password2" vallue={this.state.password2} onChange={this.onChange} />
+                        <input type="password" className="form-control form-control-lg" placeholder="Confirm Password" name="password2" value={this.state.password2} onChange={this.onChange} />
                         </div>
                         <input type="submit" className="btn btn-info btn-block mt-4" />
                     </form>
