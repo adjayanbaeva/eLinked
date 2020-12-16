@@ -29,6 +29,9 @@ class Register extends Component {
             password: this.state.password,
             password2: this.state.password2
         }
+        axios.post('/api/user/register', newUser)
+            .then(res => console.log(res))
+            .catch(err => console.log(err.response.data))
     }
 
 
