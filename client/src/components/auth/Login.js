@@ -9,7 +9,7 @@ class Login extends Component {
         this.state = {
             email: "",
             password: "",
-            errors: {}
+            errors: {},
         }
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -24,9 +24,9 @@ class Login extends Component {
             email: this.state.email,
             password: this.state.password
         };
-        axios.post('/api/user/login', user)
-            .then(res => console.log(res))
-            .catch(err => this.state({errors:err.response.data}))
+        axios.post('/api/users/login', user)
+            .then((res) => console.log(res.data))
+            .catch((err) => this.setState({errors:err.response.data}))
     }
     render(){
         const {errors} = this.state;
