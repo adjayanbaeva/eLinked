@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import {connect} from 'react-redux';
+import {registerUser} from '../../actions/authActions';
 import classnames from 'classnames';
 
 class Register extends Component {
@@ -82,4 +83,4 @@ class Register extends Component {
     }
 }
 
-export default Register;
+export default connect(null, {registerUser})(Register);
