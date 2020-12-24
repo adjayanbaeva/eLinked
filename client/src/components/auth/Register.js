@@ -85,4 +85,8 @@ class Register extends Component {
     }
 }
 
-export default connect(null, {registerUser})(Register);
+const mapStateToProps = (state) => ({
+    errors: state.errors
+})
+
+export default connect(mapStateToProps, {registerUser})(Register);
