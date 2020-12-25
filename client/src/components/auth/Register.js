@@ -35,6 +35,12 @@ class Register extends Component {
         this.props.registerUser(newUser);
         
     }
+    
+    componentWillReceiveProps(nextProps){
+        if(nextProps.errors){
+            this.setState({errors: nextProps.errors})
+        }
+    }
 
 
     render(){
@@ -84,6 +90,7 @@ class Register extends Component {
         )
     }
 }
+
 
 const mapStateToProps = (state) => ({
     errors: state.errors
