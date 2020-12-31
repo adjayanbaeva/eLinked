@@ -9,6 +9,10 @@ export const registerUser = (userData, history) => dispatch => {
 
 export const loginUser = (userData) => dispatch => {
     axios.post('/api/users/login', userData)
-        .then()
+        .then((res => {
+            //Save token to browser's store
+            const {token} = res.data;
+            localStorage.setItem('jwtToken', token)
+        }))
         .catch(err => dispatch({type: GET_ERRORS, payload: err.response.data}))
 }
