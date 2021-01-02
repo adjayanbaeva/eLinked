@@ -18,6 +18,9 @@ export const loginUser = (userData) => dispatch => {
 
             //Set token to axios header
             setAuthToken(token);
+
+            //Decode the token
+            const decoded = jwt_decode(token);
         }))
         .catch(err => dispatch({type: GET_ERRORS, payload: err.response.data}))
 }
