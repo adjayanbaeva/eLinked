@@ -45,5 +45,10 @@ export default logoutUser = () => dispatch => {
     //Remove the token from Auth Header
     setAuthToken(false);
 
+    //Reset the Redux store to false and {}
+    dispatch ({
+        type: SET_CURRENT_USER,
+        payload: {}
+    })
 
 }
