@@ -5,6 +5,46 @@ import {userLogout} from '../../actions/authActions'
 
  class Navbar extends Component {
   render() {
+    const {isAuthenticated, user} = this.props.auth;
+
+    const guestLinks = (<ul className="navbar-nav ml-auto">
+      <li className="nav-item">
+        <Link className="nav-link" to="/register">
+          Sign Up
+                </Link>
+      </li>
+      <li className="nav-item">
+        <Link className="nav-link" to="/login">
+          Login
+                </Link>
+      </li>
+    </ul>);
+
+    const authLinks = (<ul className="navbar-nav ml-auto">
+      <li className="nav-item">
+        <Link className="nav-link" to="/feed">
+          Post Feed
+        </Link>
+      </li>
+      <li className="nav-item">
+        <Link className="nav-link" to="/dashboard">
+          Dashboard
+        </Link>
+      </li>
+      <li className="nav-item">
+        <a href="" }
+        className="nav-link">
+          <img
+            className="rounded-circle"
+            src={user.avatar}
+            alt={user.name}
+            style={{width: '25px', marginRight: '5px'}}
+            title="You must have a gravatar connected to your email to display an image"
+            />
+          Logout
+        </a>
+      </li>
+    </ul>)
     return (
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
         <div className="container">
