@@ -4,6 +4,10 @@ import {connect} from 'react-redux';
 import {userLogout} from '../../actions/authActions'
 
  class Navbar extends Component {
+   onLogoutClick(e){
+     e.preventDefault();
+     this.props.logoutUser();
+   }
   render() {
     const {isAuthenticated, user} = this.props.auth;
 
@@ -32,7 +36,7 @@ import {userLogout} from '../../actions/authActions'
         </Link>
       </li>
       <li className="nav-item">
-        <a href="" 
+        <a href="" onClick={this.onLogoutClick.bind(this)}
         className="nav-link">
           <img
             className="rounded-circle"
