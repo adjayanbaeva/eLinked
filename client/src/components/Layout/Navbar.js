@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
-import {userLogout} from '../../actions/authActions'
+import {logoutUser} from '../../actions/authActions'
 
  class Navbar extends Component {
    onLogoutClick(e){
@@ -77,4 +77,4 @@ const mapStateToProps = (state) => ({
   auth: state.auth
 })
 
-export default connect(mapStateToProps, {userLogout})(Navbar);
+export default connect(mapStateToProps, {logoutUser})(Navbar);
