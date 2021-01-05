@@ -11,6 +11,7 @@ import Login from './components/auth/Login';
 import setAuthToken from './utils/setAuthToken';
 import jwt_decode from 'jwt-decode';
 import { SET_CURRENT_USER } from './actions/types';
+import { logoutUser } from './actions/authActions';
 
 //Check for token in case user steps away from domain for short period of time and comes back
 if(localStorage.jwtToken){
@@ -26,6 +27,13 @@ if(localStorage.jwtToken){
     type: SET_CURRENT_USER,
     payload: decoded
   })
+
+  //Check for expired token
+  const currentTime = Date.now()/1000;
+  if(decoded.exp < currentTime){
+    store.dispatch(logoutUser());
+    window.Location.href='/login';
+  }
 }
 
 
