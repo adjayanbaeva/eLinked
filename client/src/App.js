@@ -13,6 +13,7 @@ import jwt_decode from 'jwt-decode';
 import { SET_CURRENT_USER } from './actions/types';
 import { logoutUser } from './actions/authActions';
 import Dashboard from './components/dashboard/Dashboard';
+import CreateProfile from './components/create-profile';
 
 //Check for token in case user steps away from domain for short period of time and comes back
 if(localStorage.jwtToken){
@@ -49,6 +50,7 @@ class App extends Component {
             <Route exact path = "/register" component = {Register} />
             <Route exact path = "/login" component = {Login} />
             <Route exact path = "/dashboard" component = {Dashboard} />
+            <Route exact path = "/create-profile" component = {CreateProfile} />
             <Footer />
           </div>
         </Router>
