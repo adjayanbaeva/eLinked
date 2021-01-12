@@ -13,7 +13,7 @@ import jwt_decode from 'jwt-decode';
 import { SET_CURRENT_USER } from './actions/types';
 import { logoutUser } from './actions/authActions';
 import Dashboard from './components/dashboard/Dashboard';
-import CreateProfile from './components/create-profile';
+import CreateProfile from './components/create-profile/CreateProfile';
 
 //Check for token in case user steps away from domain for short period of time and comes back
 if(localStorage.jwtToken){
