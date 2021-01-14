@@ -5,6 +5,19 @@ const passport = require('passport');
 const Post = require('../../models/Post');
 const Profile = require('../../models/Profile');
 
+// @route   GET api/posts
+// @desc    Get posts
+// @access  Public
+router.get('/', (req,res) => {
+    Post.find()
+        .sort({date: -1})
+        .then((posts)=>res.json(posts))
+        .catch((err) => res.status(404).json({nopostsfound: 'No posts found'}))
+})
+
+// @route   POST api/posts
+// @desc    Create post
+// @access  Private
 router.post(
     '/',
     passport.authenticate('jwt', { session: false}),
